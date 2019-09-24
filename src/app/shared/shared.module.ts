@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 
 import { CanClickDirective } from './directives/can-click.directive';
 import { ModalComponent } from './modal/modal.component';
-
+import { HostElementService } from './modal/host/host-element.service';
 
 
 @NgModule({
@@ -13,6 +13,7 @@ import { ModalComponent } from './modal/modal.component';
   imports: [
     CommonModule, MatCardModule, MatButtonModule
   ],
+  providers: [HostElementService],
   exports: [CanClickDirective],
   entryComponents: [ModalComponent]
 })

@@ -6,14 +6,26 @@ import {
 
 import { ModalComponent } from './modal.component';
 import { ModalData } from './modal.model';
+import { HostElementService } from './host/host-element.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class ModalService {
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private hostElementService: HostElementService
+  ) {}
 
   open(data: ModalData, host: ViewContainerRef): ModalComponent {
     data.type = data.type || 'primary';
     return this.createModal(data, host);
+  }
+
+  openGlobal(data: ModalData): Observable<ModalComponent> {
+    return this.hostElementService.hostElement$.pipe(
+      map(host => this.createModal(data, host))
+    );
   }
 
   private createModal(data: ModalData, host: ViewContainerRef): ModalComponent {

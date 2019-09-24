@@ -1,5 +1,9 @@
 <h1>Welcome to app!</h1>
 
+<button (click)="openModalGlobal()">Open modal globally</button>
+<button (click)="openModal()">Open modal</button>
+
+
 <p>
   <button (click)="changeChild()">Change Child data</button>
   <button (click)="child.name = 'Changed BY PARENT'">
@@ -21,7 +25,6 @@
 
 <pre>Message from Child = {{ reply | json }}</pre>
 
-<button (click)="openModal()">Open modal</button>
 
 <p>I am "{{ customer.name | uppercase }}, {{ customer.firstname }}"</p>
 

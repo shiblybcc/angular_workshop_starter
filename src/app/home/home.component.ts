@@ -65,4 +65,17 @@ export class HomeComponent {
       console.log('MODAL cancelled');
     });
   }
+
+  openModalGlobal() {
+    this.modal
+      .openGlobal({
+        title: 'Global Error',
+        message: 'Please contact the support',
+        type: 'warn'
+      })
+      .subscribe(modal => {
+        modal.close.subscribe(() => console.log('Global MODAL closed'));
+      });
+  }
+
 }
