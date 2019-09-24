@@ -2,9 +2,17 @@
 
 <p>
   <button (click)="changeChild()">Change Child data</button>
+  <button (click)="child.name = 'Changed BY PARENT'">
+    Change Child via Template Var
+  </button>
 </p>
-
-<app-info-box [message]="message" [name]="name"></app-info-box>
+<app-info-box
+    #child
+    [message]="message"
+    [name]="name"
+    (replyToParent)="processReply($event)"
+></app-info-box>
+<pre>Message from Child = {{ reply | json }}</pre>
 
 
 

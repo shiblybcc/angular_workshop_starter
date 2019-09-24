@@ -3,6 +3,11 @@
     <div>
       <p>@Input() Message: {{ message }}</p>
       <p>@Input() Name: {{ name }}</p>
+
+      <p>
+        <input type="text" #text />
+        <button (click)="reply(text.value)">Message to parent</button>
+      </p>
     </div>
   </mat-card-content>
 </mat-card>

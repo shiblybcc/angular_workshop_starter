@@ -3,7 +3,9 @@ import {
   OnInit,
   Input,
   OnChanges,
-  SimpleChange
+  SimpleChange,
+  Output,
+  EventEmitter
 } from '@angular/core';
 
 @Component({
@@ -21,6 +23,9 @@ export class InfoBoxComponent implements OnInit, OnChanges {
   set name(value: string) {
     this._name = value.toLowerCase();
   }
+
+  @Output()
+  replyToParent = new EventEmitter<string>();
 
   get name(): string {
     return this._name;
@@ -44,5 +49,9 @@ export class InfoBoxComponent implements OnInit, OnChanges {
     if (changes.message && changes.name) {
       console.log('Message AND Name changed');
     }
+  }
+
+  reply(message?: string) {
+    this.replyToParent.emit(message || 'Message from Child');
   }
 }

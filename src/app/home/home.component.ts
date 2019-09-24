@@ -9,6 +9,7 @@ export class HomeComponent {
   showDetails = false;
   message = 'INIT';
   name = 'START_';
+  reply = '';
 
   customer = {
     id: 1,
@@ -24,6 +25,10 @@ export class HomeComponent {
   changeChild() {
     this.message = new Date().toISOString();
     this.name += 'X';
+  }
+
+  processReply(event) {
+    this.reply = event;
   }
 
 }
