@@ -5,16 +5,22 @@ import {
   OnChanges,
   SimpleChange,
   Output,
+  OnDestroy,
   EventEmitter
 } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { MessageService } from '../message.service';
+
 
 @Component({
   selector: 'app-info-box',
   templateUrl: './info-box.component.html',
   styleUrls: ['./info-box.component.scss']
 })
-export class InfoBoxComponent implements OnInit, OnChanges {
+export class InfoBoxComponent implements OnInit, OnChanges, OnDestroy {
   private _name: string;
+  private subscription: Subscription;
 
   @Input()
   message: string;
@@ -31,13 +37,15 @@ export class InfoBoxComponent implements OnInit, OnChanges {
     return this._name;
   }
 
-  constructor() {
-  }
+  constructor(private messageService: MessageService) {}
 
   ngOnInit() {
+    this.subscription = this.messageService.listener$.subscribe(
+      msg => (this.message = msg)
+    );
   }
 
-  ngOnChanges(changes: Record<string, SimpleChange>) {
+  ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
     if (changes.message) {
       console.log('changes.message', changes.message.currentValue);
     }
@@ -48,6 +56,12 @@ export class InfoBoxComponent implements OnInit, OnChanges {
 
     if (changes.message && changes.name) {
       console.log('Message AND Name changed');
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
 

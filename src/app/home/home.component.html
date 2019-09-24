@@ -5,13 +5,17 @@
   <button (click)="child.name = 'Changed BY PARENT'">
     Change Child via Template Var
   </button>
+  <button (click)="processReplyFromCode()">Change Child via ViewChild</button>
+  <button (click)="sendMessage()">Send message via service</button>
 </p>
+
 <app-info-box
     #child
     [message]="message"
     [name]="name"
     (replyToParent)="processReply($event)"
 ></app-info-box>
+
 <pre>Message from Child = {{ reply | json }}</pre>
 
 

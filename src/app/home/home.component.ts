@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { InfoBoxComponent } from './info-box/info-box.component';
+import { MessageService } from './message.service';
+
 
 @Component({
   selector: 'app-home',
@@ -18,6 +21,11 @@ export class HomeComponent {
     hobbies: ['eat', 'sleep', 'beer']
   };
 
+  @ViewChild('child', { static: true })
+  private child: InfoBoxComponent;
+
+  constructor(private messageService: MessageService) {}
+
   callMe(phone) {
     alert(`Please call this number: ${phone}`);
   }
@@ -29,6 +37,14 @@ export class HomeComponent {
 
   processReply(event) {
     this.reply = event;
+  }
+
+  processReplyFromCode() {
+    this.child.reply('Send from parent via CODE');
+  }
+
+  sendMessage() {
+    this.messageService.sendMessage('Send from parent via service');
   }
 
 }
