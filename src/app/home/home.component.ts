@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { InfoBoxComponent } from './info-box/info-box.component';
 import { MessageService } from './message.service';
+import { ModalService } from '../shared/modal/modal.service';
 
 
 @Component({
@@ -24,7 +25,11 @@ export class HomeComponent {
   @ViewChild('child', { static: true })
   private child: InfoBoxComponent;
 
-  constructor(private messageService: MessageService) {}
+  constructor(
+    private messageService: MessageService,
+    private hostElement: ViewContainerRef,
+    private modal: ModalService
+  ) {}
 
   callMe(phone) {
     alert(`Please call this number: ${phone}`);
@@ -46,5 +51,18 @@ export class HomeComponent {
   sendMessage() {
     this.messageService.sendMessage('Send from parent via service');
   }
+  openModal() {
+    const modal = this.modal.open(
+      { message: this.name, title: 'My name is', type: 'primary' },
+      this.hostElement
+    );
 
+    modal.close.subscribe(_ => {
+      console.log('MODAL closed');
+    });
+
+    modal.cancel.subscribe(_ => {
+      console.log('MODAL cancelled');
+    });
+  }
 }

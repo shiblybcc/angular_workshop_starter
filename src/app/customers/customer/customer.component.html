@@ -17,8 +17,12 @@
     </mat-icon>
   </button>
 </div>
+<!--<div class="details" *ngIf="showDetails">-->
+<!--  <app-customer-details></app-customer-details>-->
+<!--</div>-->
+
 <div class="details" *ngIf="showDetails">
-  <app-customer-details></app-customer-details>
+  <ng-content></ng-content>
 </div>
 
 

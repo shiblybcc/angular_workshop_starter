@@ -5,10 +5,11 @@ import { MatCardModule } from '@angular/material/card';
 
 import { HomeComponent } from './home.component';
 import { InfoBoxComponent } from './info-box/info-box.component';
+import { InfoItemComponent } from './info-item/info-item.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, InfoBoxComponent],
+  declarations: [HomeComponent, InfoBoxComponent, InfoItemComponent],
   imports: [CommonModule, FormsModule, MatCardModule]
 })
 export class HomeModule {}

@@ -14,11 +14,14 @@
     [message]="message"
     [name]="name"
     (replyToParent)="processReply($event)"
-></app-info-box>
+>
+  <footer>I am the footer</footer>
+  <div header>I am the header</div>
+</app-info-box>
 
 <pre>Message from Child = {{ reply | json }}</pre>
 
-
+<button (click)="openModal()">Open modal</button>
 
 <p>I am "{{ customer.name | uppercase }}, {{ customer.firstname }}"</p>
 
@@ -34,9 +37,9 @@
   My phone number is 123 456 7890
 </span>
 
-<br />
+<br/>
 
-<input #phone placeholder="phone number" />
+<input #phone placeholder="phone number"/>
 <button
   [class.app-disabled]="!showDetails"
   [disabled]="!showDetails"
@@ -45,8 +48,8 @@
   Call me
 </button>
 
-<br />
-<input placeholder="customer name" [(ngModel)]="customer.name" />
+<br/>
+<input placeholder="customer name" [(ngModel)]="customer.name"/>
 
 <h5>DEBUG</h5>
 <pre>user = <br/>{{ customer | json }}</pre>
