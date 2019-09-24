@@ -12,6 +12,7 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CustomerStatusPipe } from './customer-status.pipe';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
     CustomerDetailsComponent,
     CustomerComponent,
     CustomerFormComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    CustomerStatusPipe
   ],
   exports: [CustomerComponent, CustomerFormComponent],
   imports: [

@@ -5,6 +5,7 @@
         ''}}
     </h4>
   </a>
+  <span><mat-icon>{{customer?.numberOfOrders | customerStatus}}</mat-icon></span>
 </div>
 <div class="content">
   <span>
@@ -25,9 +26,5 @@
   <button mat-icon-button (click)="edit()">
     <mat-icon>edit</mat-icon>
   </button>
-  <button mat-icon-button (click)="delete(customer?.id)">
-    <mat-icon>delete</mat-icon>
-  </button>
 </div>
-
 
