@@ -26,5 +26,8 @@
   <button mat-icon-button (click)="edit()">
     <mat-icon>edit</mat-icon>
   </button>
+  <button appCanClick mat-icon-button (canClick)="delete(customer?.id)">
+    <mat-icon>delete</mat-icon>
+  </button>
 </div>
 

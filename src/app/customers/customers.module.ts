@@ -13,6 +13,7 @@ import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerStatusPipe } from './customer-status.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { CustomerStatusPipe } from './customer-status.pipe';
     MatSnackBarModule,
     MatInputModule,
     // MatFormFieldModule
+    SharedModule,
   ]
 })
 export class CustomersModule {}
