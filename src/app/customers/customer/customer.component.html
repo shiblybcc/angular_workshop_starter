@@ -1,0 +1,33 @@
+<div class="header">
+  <a>
+    <h4>
+      {{customer?.name}}{{customer?.firstname ? ', ' + customer?.firstname :
+        ''}}
+    </h4>
+  </a>
+</div>
+<div class="content">
+  <span>
+    My hobbies: "{{ customer?.hobbies }}"
+  </span>
+  <button mat-icon-button (click)="showMore()">
+    <mat-icon>
+      {{ showDetails ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}
+    </mat-icon>
+  </button>
+</div>
+<div class="details" *ngIf="showDetails">
+  <app-customer-details></app-customer-details>
+</div>
+
+
+<div class="footer">
+  <button mat-icon-button (click)="edit()">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button mat-icon-button (click)="delete(customer?.id)">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
+
+
