@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent {
   showDetails = false;
+  message = 'INIT';
+  name = 'START_';
 
   customer = {
     id: 1,
@@ -18,4 +20,10 @@ export class HomeComponent {
   callMe(phone) {
     alert(`Please call this number: ${phone}`);
   }
+
+  changeChild() {
+    this.message = new Date().toISOString();
+    this.name += 'X';
+  }
+
 }

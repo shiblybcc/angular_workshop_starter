@@ -1,5 +1,13 @@
 <h1>Welcome to app!</h1>
 
+<p>
+  <button (click)="changeChild()">Change Child data</button>
+</p>
+
+<app-info-box [message]="message" [name]="name"></app-info-box>
+
+
+
 <p>I am "{{ customer.name | uppercase }}, {{ customer.firstname }}"</p>
 
 <span>These are my hobbies: </span>
